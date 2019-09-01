@@ -5,39 +5,37 @@
 <h2>Formulario de prueba</h2><span>| {{ name }}</span>
 
 <div id="formulario" class="container-fluid mt-4 p-4">
-<form autocomplete="off">
+<form autocomplete="off" [formGroup]="formulario" (submit)="onSubmit(formulario.value)">
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
         <label>Nombre Completo</label>
         <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre"
-        ngModel name="nombre" #nombre="ngModel" required>
-        <div class="alert alert-danger" *ngIf="nombre.touched && !nombre.valid">
-          <div *ngIf="nombre.errors.required">Nombre requerido</div>
-        </div>
+        formControlName="nombre">
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label>Correo Electronico</label>
         <input type="email" class="form-control" id="correo" placeholder="Ingrese su correo"
-        ngModel name="correo" #correo="ngModel" required>
-        <div class="alert alert-danger" *ngIf="correo.touched && !correo.valid">
-          <div *ngIf="correo.errors.required">Correo requerido</div>
-        </div>
+        formControlName="correo">
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label>Telefono</label>
-        <input type="text" class="form-control" id="telefono" placeholder="Ingrese su numero telefonico" ngModel name="telefono" #telefono="ngModel">
+        <input type="text" class="form-control" id="telefono" placeholder="Ingrese su numero telefonico"
+        formControlName="telefono">
       </div>
     </div>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-info">Mostrar</button>
   </div>
 </form>
 <hr>
 <h4>Informacion:</h4>
-Nombre: {{ nombre.value }} | Correo: {{ correo.value }} | Telefono: {{ telefono.value }}
+Nombre: {{ nombre }} | Correo: {{ correo }} | Telefono: {{ telefono }}
 </div>
 </div>
 
